@@ -8,8 +8,9 @@ void setup() {
   img  = loadImage("flower.jpg"); // Load the image
   cols = width/cellsize;             // Calculate # of columns
   rows = height/cellsize;            // Calculate # of rows
-  
-  print(img.width, img.height);
+  Coord myPoint = new Coord( 10, 17);
+  println(myPoint);
+  println(img.width, img.height);
   img.loadPixels();
 
   for (int i=0; i < img.height; ++i) {
@@ -23,11 +24,11 @@ void setup() {
       }
 
       // Streak
-      //if (i > 375 && j > 600 && i < 450) {
-      // int loc2 = i * img.width + 600;
-      // color c = img.pixels[loc2];
-      // img.pixels[loc] = c; 
-      //}
+      if (i > 375 && j > 600 && i < 450) {
+      int loc2 = i * img.width + 600;
+      color c = img.pixels[loc2];
+      img.pixels[loc] = c; 
+      }
  
     }
   }
