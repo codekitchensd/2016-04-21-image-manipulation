@@ -1,16 +1,19 @@
+import java.util.*;
 
 PImage img;       // The source image
 int cellsize = 4; // Dimensions of each cell in the grid
 int cols, rows;   // Number of columns and rows in our system
+
+//A list for collecting mouse down coordinates.
+List<Coord> mouseCoords = new ArrayList<Coord>();
+int count = 0;
 
 void setup() {
   size(960, 639, P3D); 
   img  = loadImage("flower.jpg"); // Load the image
   cols = width/cellsize;             // Calculate # of columns
   rows = height/cellsize;            // Calculate # of rows
-  Coord myPoint = new Coord( 10, 17);
-  println(myPoint);
-  println(img.width, img.height);
+  
   img.loadPixels();
 
   for (int i=0; i < img.height; ++i) {
@@ -25,15 +28,38 @@ void setup() {
 
       // Streak
       if (i > 375 && j > 600 && i < 450) {
-      int loc2 = i * img.width + 600;
-      color c = img.pixels[loc2];
-      img.pixels[loc] = c; 
+        int loc2 = i * img.width + 600;
+        color c = img.pixels[loc2];
+        img.pixels[loc] = c; 
       }
  
     }
   }
   img.updatePixels();
 }  
+
+void drawStreak() {
+  img.loadPixels();
+  
+  for (int i=0; i < img.height; ++i) {
+    for (int j=0; j < img.width; ++j) {  
+      int loc = i*img.width + j;
+      
+      for (Coord c : mouseCoords) {
+        if (j == c.x && i == c.y) {
+          //println("match: ", c);
+          color pC = img.pixels[loc];
+          stroke(pC);
+          line(c.x,c.y,img.width, 0);
+        }
+      }
+ 
+    }
+  }
+  //img.updatePixels();
+  
+  
+}
 
 float colorDistance(color inC1, color inC2) {
   
@@ -48,8 +74,26 @@ float colorDistance(color inC1, color inC2) {
 
 void draw() {
 
-  image(img, 0, 0);
+  //image(img, 0, 0);
   
+}
+
+void mousePressed() {
+  println("Mouse Pressed");
+  mouseCoords.clear();
+}
+
+void mouseDragged() {
+  mouseCoords.add( new Coord(mouseX, mouseY ) );
+}
+
+void mouseReleased() {
+  println("Mouse Released");
+  
+  // If mouse coordinates were captured draw streak.
+  if (mouseCoords.size() > 0) {
+   drawStreak(); 
+  }
 }
 
   
