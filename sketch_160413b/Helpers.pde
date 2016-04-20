@@ -22,3 +22,17 @@ float colorDistance(color inC1, color inC2) {
   
   return delta;
 }
+
+// Color Safe Range Clamp
+color basicColorClamp(color c) {
+   return color(clamp(red(c), 0, 255), clamp(green(c), 0, 255), clamp(blue(c), 0, 255));
+}
+
+// Clamp functions, float and int
+public static float clamp(float val, float min, float max) {
+    return Math.max(min, Math.min(max, val));
+}
+
+public static int clamp(int val, int min, int max) {
+    return Math.max(min, Math.min(max, val));
+}

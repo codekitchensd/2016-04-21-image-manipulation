@@ -17,7 +17,12 @@ void setup() {
   color purple = color(106, 40, 212);
   color white = color(255);
   
-  replaceColor(img, purple, white, 100.0);
+  //replaceColor(img, purple, white, 100.0);
+  //adjustBrightness(img, 12);
+  //adjustContrast(img, 60);
+  //addSoftTint(img, color(244, 234, 189));
+  addSoftTint(img, color(244, 0, 0));
+  
 }  
 
 void drawStreak() {
