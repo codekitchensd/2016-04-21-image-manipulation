@@ -6,25 +6,29 @@ PImage img;       // The source image
 int cellsize = 4; // Dimensions of each cell in the grid
 int cols, rows;   // Number of columns and rows in our system
 
+
 //A list for collecting mouse down coordinates.
 List<Coord> mouseCoords = new ArrayList<Coord>();
 
 void setup() {
   size(960, 639, P3D); 
   pg = createGraphics(width, height);
-  img  = loadImage("test.jpg"); // Load the image
-  
+  img  = loadImage("flower.jpg"); // Load the image
+
   color purple = color(106, 40, 212);
   color white = color(255);
   
-  replaceColor(img, purple, white, 100.0);
+  //replaceColor(img, purple, white, 100.0);
   adjustBrightness(img, 12);
   adjustContrast(img, 60);
   multiplyTint(img, color(244, 234, 189)); // Light Yellow
   //adjustHighlightOutputLevels(img, 117);
-  adjustShadowOutputLevels(img, 117);
+  //adjustShadowOutputLevels(img, 117);
   adjustContrast(img, -11);
   adjustMidtoneBalance(img, 13, 18, -7);
+  pixelSort(img);
+  adjustBrightness(img, -32);
+  adjustContrast(img, 20);
 }  
 
 void drawStreak() {
@@ -49,6 +53,7 @@ void drawStreak() {
   
   
 }
+
 
 void customDraw() {
   //clear the background to black
@@ -82,6 +87,7 @@ void draw() {
   
 }
 
+
 void keyPressed() {
    //Left
    if (keyCode == LEFT) {
@@ -113,5 +119,6 @@ void mouseReleased() {
    drawStreak(); 
   }
 }
+
 
   
