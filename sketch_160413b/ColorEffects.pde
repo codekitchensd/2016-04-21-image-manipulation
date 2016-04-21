@@ -1,4 +1,6 @@
 void pixelSort(PImage img){
+  // Taken from Jeff Thompson's example at https://github.com/jeffThompson/PixelSorting/blob/master/SortByHighestRGBValue/SortByHighestRGBValue.pde
+  // Inspiration http://prostheticknowledge.tumblr.com/post/30196185509/mountain-tour-2010-by-kim-asendorf-one-of-the
   color c;                                                // values for looking at pixels
   float r, g, b;                                          //  initialize here to avoid re-creating each px
   ArrayList<Integer> rColor = new ArrayList<Integer>();   // store red colors

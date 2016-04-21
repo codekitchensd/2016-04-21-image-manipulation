@@ -17,16 +17,16 @@ void setup() {
 
   color purple = color(106, 40, 212);
   color white = color(255);
-  
+
   pixelSort(img);
-  replaceColor(img, purple, white, 100.0);
-  adjustBrightness(img, 12);
-  adjustContrast(img, 60);
+//  replaceColor(img, purple, white, 100.0);
+//  adjustBrightness(img, 12);
+//  adjustContrast(img, 60);
   //addSoftTint(img, color(244, 234, 189));
   //addSoftTint(img, color(244, 0, 0));
   
 }  
-/*
+
 void drawStreak() {
   img.loadPixels();
   
@@ -49,8 +49,8 @@ void drawStreak() {
   
   
 }
-*/
-/*
+
+
 void customDraw() {
   //clear the background to black
   background(0);
@@ -76,14 +76,14 @@ void customDraw() {
   image(pg, 0, 0);
   
 }
-*/
+
 void draw() {
 
   image(img, 0, 0);
   
 }
 
-/*
+
 void keyPressed() {
    //Left
    if (keyCode == LEFT) {
@@ -115,6 +115,6 @@ void mouseReleased() {
    drawStreak(); 
   }
 }
-*/
+
 
   
