@@ -12,7 +12,7 @@ List<Coord> mouseCoords = new ArrayList<Coord>();
 void setup() {
   size(960, 639, P3D); 
   pg = createGraphics(width, height);
-  img  = loadImage("flower.jpg"); // Load the image
+  img  = loadImage("test.jpg"); // Load the image
   
   color purple = color(106, 40, 212);
   color white = color(255);
@@ -21,7 +21,10 @@ void setup() {
   adjustBrightness(img, 12);
   adjustContrast(img, 60);
   multiplyTint(img, color(244, 234, 189)); // Light Yellow
-  
+  //adjustHighlightOutputLevels(img, 117);
+  adjustShadowOutputLevels(img, 117);
+  adjustContrast(img, -11);
+  adjustMidtoneBalance(img, 13, 18, -7);
 }  
 
 void drawStreak() {

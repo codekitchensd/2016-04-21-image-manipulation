@@ -36,3 +36,16 @@ public static float clamp(float val, float min, float max) {
 public static int clamp(int val, int min, int max) {
     return Math.max(min, Math.min(max, val));
 }
+
+//color multiplyColor (color a, color b) {
+  
+//  float r1 = a >> 16 & 0xFF;
+//  float g1 = a >> 8 & 0xFF;
+//  float b1 = a & 0xFF;
+  
+//  float r2 = b >> 16 & 0xFF;
+//  float g2 = b >> 8 & 0xFF;
+//  float b2 = b & 0xFF;
+  
+//  return color(r1*r2, g1*g2, b1*b2);
+//}
