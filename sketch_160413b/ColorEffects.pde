@@ -71,26 +71,24 @@ void adjustBrightness(PImage img, float amount) {
   
 }
 
-/// Soft Tint 
-void addSoftTint(PImage img, color tintColor) {
+/// Multiply Solid Color 
+void multiplyTint(PImage img, color tintColor) {
   
-  //img.loadPixels();
+  img.loadPixels();
 
-  PImage tintLayer = get();
-  
-  for (int i=0; i < tintLayer.height; ++i) {
-    for (int j=0; j < tintLayer.width; ++j) {  
-      int loc = i*tintLayer.width + j;
-      tintLayer.pixels[loc] = tintColor;
+  for (int i=0; i < img.height; ++i) {
+    for (int j=0; j < img.width; ++j) {  
+      int loc = i*img.width + j;
+      color currentColor = img.pixels[loc];
+      
+      int mRed = (int)((red(currentColor) * red(tintColor))/255);
+      int mGreen = (int)((green(currentColor) * green(tintColor))/255);
+      int mBlue = (int)((blue(currentColor) * blue(tintColor))/255);
 
+      img.pixels[loc] = color(mRed, mGreen, mBlue);
     }
   }
-  
-  image(img, 0, 0);
-  image(tintLayer, 0, 0);
-  blend(tintLayer, 0, 0, img.width, img.height, 0, 0, img.width, img.height, MULTIPLY);
-  
-  img = get();
-  //img.updatePixels();
+
+  img.updatePixels();
 
 }
