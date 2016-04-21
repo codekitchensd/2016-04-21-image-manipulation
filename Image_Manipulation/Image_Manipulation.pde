@@ -29,6 +29,7 @@ void setup() {
   pixelSort(img);
   adjustBrightness(img, -32);
   adjustContrast(img, 20);
+  image(img, 0, 0);
 }  
 
 void drawStreak() {
@@ -83,7 +84,7 @@ void customDraw() {
 
 void draw() {
 
-  image(img, 0, 0);
+  //image(img, 0, 0);
   
 }
 
