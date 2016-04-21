@@ -36,3 +36,10 @@ public static float clamp(float val, float min, float max) {
 public static int clamp(int val, int min, int max) {
     return Math.max(min, Math.min(max, val));
 }
+
+int highestColor(float r, float g, float b){
+  if((r>g)&&(r>b)){ return 1; }
+  if((g>r)&&(g>b)){ return 2; }
+  if((b>r)&&(b>g)){ return 3; }
+    else return 0;
+}

@@ -1,36 +1,27 @@
 //Allows the use of lists.
 import java.util.*;
-import controlP5.*;
 
-ControlP5 cp5;
 PGraphics pg;     // Allows for stand alone draw calls
 PImage img;       // The source image
 int cellsize = 4; // Dimensions of each cell in the grid
 int cols, rows;   // Number of columns and rows in our system
-int brightnessLevel = 12;
 
-Slider brightness;
 
 //A list for collecting mouse down coordinates.
 List<Coord> mouseCoords = new ArrayList<Coord>();
 
 void setup() {
   size(960, 639, P3D); 
-  cp5 = new ControlP5(this);
   pg = createGraphics(width, height);
   img  = loadImage("flower.jpg"); // Load the image
-  /*
-  cp5.addSlider("brightnessLrevel")
-    .setPosition(100,50)
-    .setRange(0,255);
-  */   
+
   color purple = color(106, 40, 212);
   color white = color(255);
   
-//  replaceColor(img, purple, white, 100.0);
+  pixelSort(img);
+  replaceColor(img, purple, white, 100.0);
   adjustBrightness(img, 12);
   adjustContrast(img, 60);
-  //adjustBrightness(img, brightnessLevel);
   //addSoftTint(img, color(244, 234, 189));
   //addSoftTint(img, color(244, 0, 0));
   
