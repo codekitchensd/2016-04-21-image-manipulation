@@ -223,10 +223,27 @@ void adjustMidtoneBalance(PImage img, float rLevel, float gLevel, float bLevel) 
     for (int j=0; j < img.width; ++j) {  
       int loc = i*img.width + j;
       color currentColor = img.pixels[loc];
+      float r = red(currentColor);
+      float g = green(currentColor);
+      float b = blue(currentColor);
       
-      int newRed   = clamp( (int) (red(currentColor) + rLevel), 0, 255);
-      int newGreen = clamp( (int) (green(currentColor) + gLevel), 0, 255);
-      int newBlue  = clamp( (int) (blue(currentColor) + bLevel), 0, 255);
+      float luminance = (0.2126*r + 0.7152*g + 0.0722*b);
+      
+      float factor;
+      
+      if (luminance <= 50) {
+        factor = luminance/50;
+      } else if (luminance > 50) {
+        factor = (100 - luminance)/50;
+      } else {
+        println("Luminance Factor Error");
+        factor = 0;
+      }
+      
+      
+      int newRed   = clamp( (int) (red(currentColor) + rLevel*factor), 0, 255);
+      int newGreen = clamp( (int) (green(currentColor) + gLevel*factor), 0, 255);
+      int newBlue  = clamp( (int) (blue(currentColor) + bLevel*factor), 0, 255);
       
       img.pixels[loc] = color(newRed, newGreen, newBlue);
 
