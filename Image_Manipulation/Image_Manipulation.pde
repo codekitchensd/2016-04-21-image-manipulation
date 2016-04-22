@@ -27,7 +27,7 @@ void setup() {
   adjustContrast(img, -11);
   adjustMidtoneBalance(img, 13, 18, -7);
   pixelSort(img);
-  adjustBrightness(img, -32);
+  //adjustBrightness(img, -32);
   adjustContrast(img, 20);
   image(img, 0, 0);
 }  
